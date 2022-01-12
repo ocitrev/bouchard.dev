@@ -1,0 +1,17 @@
+:root {
+    color-scheme: dark light;
+    --dark-bg: #1e1e1e;
+    --dark-text: #e1e1e1;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+}
+
+body {
+    font-size: 14pt;
+    font-family: 'Georgia', serif;
+}
