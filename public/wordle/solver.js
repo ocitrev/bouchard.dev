@@ -28,10 +28,10 @@ async function load() {
       solve();
     });
 
-    txt.addEventListener('focus', e => {
-      console.log(e);
-      txt.select();
-    });
+    // txt.addEventListener('focus', e => {
+    //   console.log(e);
+    //   txt.select();
+    // });
 
     const savedText = window.localStorage.getItem(txt.id);
     if (savedText) {
@@ -46,30 +46,30 @@ async function load() {
 
   });
 
-  document.querySelectorAll('.letter').forEach(txt => {
-    txt.addEventListener('keydown', e => {
+  // document.querySelectorAll('.letter').forEach(txt => {
+  //   txt.addEventListener('keydown', e => {
 
-      const prev = () => {
-        if (txt.previousElementSibling) {
-          setTimeout(() => { txt.previousElementSibling.focus(); }, 0)
-        }
-      };
+  //     const prev = () => {
+  //       if (txt.previousElementSibling) {
+  //         setTimeout(() => { txt.previousElementSibling.focus(); }, 0)
+  //       }
+  //     };
 
-      const next = () => {
-        if (txt.nextElementSibling) {
-          setTimeout(() => { txt.nextElementSibling.focus(); }, 0)
-        }
-      };
+  //     const next = () => {
+  //       if (txt.nextElementSibling) {
+  //         setTimeout(() => { txt.nextElementSibling.focus(); }, 0)
+  //       }
+  //     };
 
-      if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
-        prev();
-      } else if (e.key === 'ArrowRight' && txt.nextElementSibling) {
-        next();
-      } else if (e.key.match(/^[a-zA-Z]$/)) {
-        next();
-      }
-    });
-  });
+  //     if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+  //       prev();
+  //     } else if (e.key === 'ArrowRight' && txt.nextElementSibling) {
+  //       next();
+  //     } else if (e.key.match(/^[a-zA-Z]$/)) {
+  //       next();
+  //     }
+  //   });
+  // });
 
   solve();
 }
