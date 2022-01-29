@@ -82,7 +82,16 @@ button {
   align-items: center;
 }
 
+.wordle_link img {
+  padding-right: .5em;
+}
+
 .wordle_link a {
-  padding-left: 10px;
   text-decoration: none;
+  color: inherit;
+}
+
+.wordle_link .title {
+  font-size: 20pt;
+  font-weight: bold;
 }
