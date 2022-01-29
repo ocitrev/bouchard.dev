@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark light;
+  --dark-bg: #1e1e1e;
+  --dark-text: #e1e1e1;
+  --dark-green: #538d4e;
+  --dark-yellow: #b59f3b;
+  --light-bg: #ffffff;
+  --light-text: #000000;
+  --light-green: #6aaa64;
+  --light-yellow: #c9b458;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
+
+  .letter {
+    background-color: var(--dark-green);
+  }
+
+  .not_letter {
+    background-color: var(--dark-yellow);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+  }
+
+  .letter {
+    background-color: var(--light-green);
+  }
+
+  .not_letter {
+    background-color: var(--light-yellow);
+  }
+}
+
+body {
+  font-size: 14pt;
+  font-family: sans-serif
+}
+
+label {
+  font-size: 20pt;
+}
+
+.textbox {
+  font-family: monospace;
+  text-align: center;
+  height: 2em;
+  font-size: 20pt;
+}
+
+.letter, .not_letter {
+  width: 2em;
+}
+
+.section {
+  margin: 1em;
+}
+
+button {
+  height: 2em;
+  width: 10em;
+  font-size: 20pt;
+}
+
+#results {
+  font-family: monospace;
+  font-weight: lighter;
+  max-width: 600px;
+  column-width: 100px;
+}
+
+.wordle_link {
+  display: flex;
+  align-items: center;
+}
+
+.wordle_link a {
+  padding-left: 10px;
+  text-decoration: none;
+}
