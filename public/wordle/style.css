@@ -41,33 +41,31 @@
 }
 
 body {
-  font-size: 14pt;
+  font-size: 12pt;
   font-family: sans-serif
 }
 
 label {
-  font-size: 20pt;
+  font-size: 18pt;
 }
 
 .textbox {
   font-family: monospace;
   text-align: center;
-  height: 2em;
-  font-size: 20pt;
+  height: 48px;
+  font-size: 18pt;
+}
+
+#unwanted {
+  width: 290px;
 }
 
 .letter, .not_letter {
-  width: 2em;
+  width: 48px;
 }
 
 .section {
   margin: 1em;
-}
-
-button {
-  height: 2em;
-  width: 10em;
-  font-size: 20pt;
 }
 
 #results {
