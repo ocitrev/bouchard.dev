@@ -1,7 +1,7 @@
 'use strict';
 
 let words = null;
-const max_results = 100;
+const MAX_RESULTS = 100;
 
 async function fetch_words() {
   const options = {
@@ -19,8 +19,16 @@ function getLettersOnly(text) {
 
 async function load() {
   words = await fetch_words();
+  const today = new Date().getDate().toString();
+  const savedDate = window.localStorage.getItem('date');
+  const resetLocalStorage = today !== savedDate;
+  window.localStorage.setItem('date', today);
 
   document.querySelectorAll('input').forEach(txt => {
+    if (resetLocalStorage) {
+      window.localStorage.removeItem(txt.id);
+    }
+
     txt.addEventListener('input', e => {
       const data = getLettersOnly(e.target.value);
       window.localStorage.setItem(e.target.id, data);
@@ -33,6 +41,7 @@ async function load() {
     //   txt.select();
     // });
 
+    // reload if it is the same day
     const savedText = window.localStorage.getItem(txt.id);
     if (savedText) {
       txt.value = savedText;
@@ -96,7 +105,6 @@ function has_all(letters, word) {
 
 function filter() {
   const unwanted = getLettersOnly(document.getElementById('unwanted').value);
-  const wanted = getLettersOnly(document.getElementById('wanted').value);
 
   const letters = [
     [document.getElementById('not_letter_1').value, document.getElementById('letter_1').value],
@@ -106,11 +114,14 @@ function filter() {
     [document.getElementById('not_letter_5').value, document.getElementById('letter_5').value],
   ].map(a => { return a.map(getLettersOnly); })
 
-  const pattern = new RegExp(letters.map(l => {
+  // deduce wanted letters from the filters
+  const wanted = Array.from(new Set(letters.flat().filter(x => !!x).join('')));
+
+  const pattern = new RegExp(letters.flatMap(l => {
     if (l[1]) {
       return l[1];
     } else if (l[0]) {
-      return '[^' + l[0] + ']';
+      return `[^${l[0]}]`;
     } else {
       return '.';
     }
@@ -138,27 +149,38 @@ function sample(array, n) {
   return array;
 }
 
+function get_result_text(nb_matches) {
+  let label_text;
+  let icon_prefix;
+
+  if (nb_matches == 0) {
+    icon_prefix = '❌';
+    label_text = 'No matches.';
+  } else if (nb_matches == 1) {
+    icon_prefix = '🎉';
+    label_text = 'Nice!';
+  } else if (nb_matches > 1) {
+    label_text = `Found ${nb_matches} matches`;
+    if (nb_matches > MAX_RESULTS) {
+      label_text += `. Showing ${MAX_RESULTS} random results`;
+      icon_prefix = '💡'
+    } else {
+      icon_prefix = '✅'
+    }
+    label_text += '.';
+  }
+
+  return `${icon_prefix} ${label_text}`;
+}
+
 function solve() {
   const all_results = filter();
 
+  document.getElementById('result_header').textContent = get_result_text(all_results.length);
+  const results = sample(all_results, MAX_RESULTS);
+
   const list = document.getElementById('results');
   list.textContent = '';
-
-  const label = document.createElement('div');
-  let label_text = 'Found ' + all_results.length + ' match';
-
-  if (all_results.length > 1) {
-    label_text += 'es';
-
-    if (all_results.length > max_results) {
-      label_text += '. Showing ' + max_results + ' random results';
-    }
-  }
-
-  label_text += '.';
-  document.getElementById('result_header').textContent = label_text;
-
-  const results = sample(all_results, max_results);
   results.forEach(w => list.appendChild(createResult(w)));
 }
 
