@@ -6,6 +6,8 @@ exports.handler = async function(event, context) {
         client_ip = event.headers['client-ip']
     }
 
+    console.log('headers: ', event.headers);
+
     return {
         statusCode: 200,
         body: client_ip
