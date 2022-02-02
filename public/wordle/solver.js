@@ -3,7 +3,7 @@
 let words = null;
 const MAX_RESULTS = 100;
 
-async function fetch_words() {
+async function fetchWords() {
   const options = {
     credentials: 'same-origin'
   };
@@ -18,22 +18,22 @@ function getLettersOnly(text) {
 }
 
 async function load() {
-  words = await fetch_words();
+  words = await fetchWords();
   const today = new Date().getDate().toString();
   const savedDate = window.localStorage.getItem('date');
   const resetLocalStorage = today !== savedDate;
-  window.localStorage.setItem('date', today);
 
   document.querySelectorAll('input').forEach(txt => {
     if (resetLocalStorage) {
       window.localStorage.removeItem(txt.id);
     }
 
-    txt.addEventListener('input', e => {
+    txt.addEventListener('input', async e => {
       const data = getLettersOnly(e.target.value);
       window.localStorage.setItem(e.target.id, data);
+      window.localStorage.setItem('date', today);
       e.target.value = data;
-      solve();
+      await solve();
     });
 
     // txt.addEventListener('focus', e => {
@@ -80,10 +80,10 @@ async function load() {
   //   });
   // });
 
-  solve();
+  await solve();
 }
 
-function has_any(letters, word) {
+function hasAny(letters, word) {
   for (let letter of letters) {
     if (word.match(new RegExp(letter, 'i'))) {
       return true;
@@ -93,7 +93,7 @@ function has_any(letters, word) {
   return false;
 }
 
-function has_all(letters, word) {
+function hasAll(letters, word) {
   for (let letter of letters) {
     if (!word.match(new RegExp(letter, 'i'))) {
       return false;
@@ -112,7 +112,7 @@ function filter() {
     [document.getElementById('not_letter_3').value, document.getElementById('letter_3').value],
     [document.getElementById('not_letter_4').value, document.getElementById('letter_4').value],
     [document.getElementById('not_letter_5').value, document.getElementById('letter_5').value],
-  ].map(a => { return a.map(getLettersOnly); })
+  ].map(a => a.map(getLettersOnly))
 
   // deduce wanted letters from the filters
   const wanted = Array.from(new Set(letters.flat().filter(x => !!x).join('')));
@@ -122,16 +122,14 @@ function filter() {
       return l[1];
     } else if (l[0]) {
       return `[^${l[0]}]`;
-    } else {
-      return '.';
     }
+    return '.';
   }).join(''), 'i');
 
-  return words.filter(word => {
-    return has_all(wanted, word)
-      && !has_any(unwanted, word)
-      && word.match(pattern)
-  });
+  return words.filter(word => hasAll(wanted, word)
+    && !hasAny(unwanted, word)
+    && word.match(pattern)
+  );
 }
 
 function createResult(text) {
@@ -149,36 +147,34 @@ function sample(array, n) {
   return array;
 }
 
-function get_result_text(nb_matches) {
-  let label_text;
-  let icon_prefix;
+function getResultText(nbMatches) {
+  let labelText;
+  let iconPrefix;
 
-  if (nb_matches == 0) {
-    icon_prefix = '❌';
-    label_text = 'No matches.';
-  } else if (nb_matches == 1) {
-    icon_prefix = '🎉';
-    label_text = 'Nice!';
-  } else if (nb_matches > 1) {
-    label_text = `Found ${nb_matches} matches`;
-    if (nb_matches > MAX_RESULTS) {
-      label_text += `. Showing ${MAX_RESULTS} random results`;
-      icon_prefix = '💡'
+  if (nbMatches == 0) {
+    iconPrefix = '❌';
+    labelText = 'No matches.';
+  } else if (nbMatches == 1) {
+    iconPrefix = '🎉';
+    labelText = 'Nice!';
+  } else if (nbMatches > 1) {
+    labelText = `Found ${nbMatches} matches`;
+    if (nbMatches > MAX_RESULTS) {
+      labelText += `. Showing ${MAX_RESULTS} random results`;
+      iconPrefix = '💡'
     } else {
-      icon_prefix = '✅'
+      iconPrefix = '✅'
     }
-    label_text += '.';
+    labelText += '.';
   }
 
-  return `${icon_prefix} ${label_text}`;
+  return `${iconPrefix} ${labelText}`;
 }
 
-function solve() {
-  const all_results = filter();
-
-  document.getElementById('result_header').textContent = get_result_text(all_results.length);
-  const results = sample(all_results, MAX_RESULTS);
-
+async function solve() {
+  const allResults = filter();
+  document.getElementById('result_header').textContent = getResultText(allResults.length);
+  const results = sample(allResults, MAX_RESULTS);
   const list = document.getElementById('results');
   list.textContent = '';
   results.forEach(w => list.appendChild(createResult(w)));
