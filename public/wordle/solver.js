@@ -17,10 +17,94 @@ function getLettersOnly(text) {
   return text.replaceAll(/[^a-z]/ig, '');
 }
 
+function registerKeyboardNavigation() {
+  let lastNotLetterFocus = document.getElementById('not_letter_1');
+
+  document.querySelectorAll('#unwanted').forEach(txt => {
+    txt.addEventListener('keydown', e => {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+        // ignore event if modfier keys are pressed
+        return;
+      }
+
+      if (e.key === 'ArrowDown' && lastNotLetterFocus) {
+        // move down to last focused 'Wrong spot'
+        lastNotLetterFocus.focus();
+        e.preventDefault();
+      }
+    });
+  });
+
+  document.querySelectorAll('.not_letter').forEach(txt => {
+    txt .addEventListener('focus', e => {
+      lastNotLetterFocus = txt;
+    });
+    txt.addEventListener('keydown', e => {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+        // ignore event if modfier keys are pressed
+        return;
+      }
+
+      if (e.key === 'ArrowUp') {
+        // move up to 'Not in the word' field
+        document.getElementById('unwanted').focus();
+        e.preventDefault();
+      } else if (e.key === 'ArrowDown') {
+        // move down to 'Correct spot'
+        document.getElementById(txt.id.replace(/^not_/,'')).focus();
+        e.preventDefault();
+      }
+    });
+  });
+
+  document.querySelectorAll('.letter').forEach(txt => {
+    txt.addEventListener('keydown', e => {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+        // ignore event if modfier keys are pressed
+        return;
+      }
+
+      if (e.key === 'ArrowUp') {
+        // move up to 'Wrong spot'
+        document.getElementById(`not_${txt.id}`).focus();
+        e.preventDefault();
+      }
+    });
+  });
+
+  document.querySelectorAll('.not_letter, .letter').forEach(txt => {
+    txt.addEventListener('keydown', e => {
+
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && txt.selectionStart == 0) {
+        const prevSibling = txt.previousElementSibling;
+        if (prevSibling) {
+          prevSibling.focus();
+          const caretPos = prevSibling.value.length;
+          prevSibling.setSelectionRange(caretPos, caretPos);
+          e.preventDefault();
+        }
+      } else if (e.key === 'ArrowRight' && txt.selectionStart == txt.value.length) {
+        const nextSibling = txt.nextElementSibling;
+        if (nextSibling) {
+          nextSibling.focus();
+          nextSibling.setSelectionRange(0, 0);
+          e.preventDefault();
+        }
+      }
+    });
+  });
+}
+
 async function load() {
   words = await fetchWords();
   const today = new Date().getDate().toString();
   const savedDate = window.localStorage.getItem('date');
+
+  // help users reset all textboxes when the page reloads on a new day
   const resetLocalStorage = today !== savedDate;
 
   document.querySelectorAll('input').forEach(txt => {
@@ -36,50 +120,20 @@ async function load() {
       await solve();
     });
 
-    // txt.addEventListener('focus', e => {
-    //   console.log(e);
-    //   txt.select();
-    // });
-
-    // reload if it is the same day
     const savedText = window.localStorage.getItem(txt.id);
     if (savedText) {
       txt.value = savedText;
     }
 
+    // only allow letters (does not prevent paste)
     txt.addEventListener('keypress', e => {
       if (!e.key.match(/^[a-zA-Z]$/)) {
         e.preventDefault();
       }
     });
-
   });
 
-  // document.querySelectorAll('.letter').forEach(txt => {
-  //   txt.addEventListener('keydown', e => {
-
-  //     const prev = () => {
-  //       if (txt.previousElementSibling) {
-  //         setTimeout(() => { txt.previousElementSibling.focus(); }, 0)
-  //       }
-  //     };
-
-  //     const next = () => {
-  //       if (txt.nextElementSibling) {
-  //         setTimeout(() => { txt.nextElementSibling.focus(); }, 0)
-  //       }
-  //     };
-
-  //     if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
-  //       prev();
-  //     } else if (e.key === 'ArrowRight' && txt.nextElementSibling) {
-  //       next();
-  //     } else if (e.key.match(/^[a-zA-Z]$/)) {
-  //       next();
-  //     }
-  //   });
-  // });
-
+  registerKeyboardNavigation();
   await solve();
 }
 
@@ -148,36 +202,37 @@ function sample(array, n) {
 }
 
 function getResultText(nbMatches) {
-  let labelText;
-  let iconPrefix;
+  let text;
+  let icon;
+  let punct = '.';
 
   if (nbMatches == 0) {
-    iconPrefix = '❌';
-    labelText = 'No matches.';
+    icon = '❌';
+    text = 'No matches';
   } else if (nbMatches == 1) {
-    iconPrefix = '🎉';
-    labelText = 'Nice!';
+    icon = '🎉';
+    text = 'Nice';
+    punct = '!';
   } else if (nbMatches > 1) {
-    labelText = `Found ${nbMatches} matches`;
+    text = `Found ${nbMatches} matches`;
     if (nbMatches > MAX_RESULTS) {
-      labelText += `. Showing ${MAX_RESULTS} random results`;
-      iconPrefix = '💡'
+      text += `. Showing ${MAX_RESULTS} random results`;
+      icon = '💡'
     } else {
-      iconPrefix = '✅'
+      icon = '✅'
     }
-    labelText += '.';
   }
 
-  return `${iconPrefix} ${labelText}`;
+  return `${icon} ${text}${punct}`;
 }
 
 async function solve() {
-  const allResults = filter();
-  document.getElementById('result_header').textContent = getResultText(allResults.length);
-  const results = sample(allResults, MAX_RESULTS);
+  const resultHeader = document.getElementById('result_header');
   const list = document.getElementById('results');
-  list.textContent = '';
-  results.forEach(w => list.appendChild(createResult(w)));
+  const allResults = filter();
+  resultHeader.textContent = getResultText(allResults.length);
+  const results = sample(allResults, MAX_RESULTS);
+  list.replaceChildren(...results.map(r => createResult(r)));
 }
 
 window.addEventListener('load', load);
