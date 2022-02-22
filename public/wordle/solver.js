@@ -8,9 +8,8 @@ async function fetchWords() {
     credentials: 'same-origin'
   };
 
-  return await fetch('5-letters.txt', options)
-    .then(response => response.text())
-    .then(data => data.split(/\r?\n/));
+  return await fetch('words.json', options)
+    .then(response => response.json());
 }
 
 function getLettersOnly(text) {
@@ -101,6 +100,7 @@ function registerKeyboardNavigation() {
 
 async function load() {
   words = await fetchWords();
+
   const today = new Date().getDate().toString();
   const savedDate = window.localStorage.getItem('date');
 
@@ -180,25 +180,48 @@ function filter() {
     return '.';
   }).join(''), 'i');
 
-  return words.filter(word => hasAll(wanted, word)
+  return Object.keys(words).filter(word => hasAll(wanted, word)
     && !hasAny(unwanted, word)
     && word.match(pattern)
-  );
+  ).map(w => [w, words[w]]);
 }
 
 function createResult(text) {
   const result = document.createElement('li');
-  result.textContent = text;
+  result.textContent = text[0];
+  result.title = Math.log10(text[1]) * 10;
   return result;
+}
+
+function comp_freq(a, b) {
+  if (a[1] < b[1]) {
+    return 1;
+  }
+  if (b[1] < a[1]) {
+    return -1;
+  }
+
+  return 0;
+}
+
+function comp_word(a, b) {
+  if (a[0] < b[0]) {
+    return -1;
+  }
+  if (b[0] < a[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 function sample(array, n) {
   if (array.length > n) {
     const shuffled = array.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, n).sort();
+    return shuffled.slice(0, n).sort(comp_freq);
   }
 
-  return array;
+  return array.sort(comp_freq);
 }
 
 function getResultText(nbMatches) {
