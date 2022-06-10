@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSpy v2014 sp1 (x64) (http://www.altova.com) by Genevieve Blain (20-20 Technologies Inc) -->
+<MaterialMap Engine="VirtualStudio" Version="5.0">
+	<Groups NbLayers="1" BaseRoughness="0.9" Likelyhood="1.0">
+		<Group name="Metal" BaseRoughness="0.2">
+			<Types>
+				<Type name="Aluminum"/> <!--BaseRefractIndex="{1.33 0.97 0.62}" BaseExtinction="{7.47 6.4  5.3}"-->
+				<Type name="Brass"/>
+				<Type name="Bronze"/>
+				<Type name="Chrome"/> <!--BaseRefractIndex="{3.42 2.79 2.02}" BaseExtinction="{4.27 4.2  3.86}"-->
+				<Type name="Copper"/> <!--BaseRefractIndex="{0.27 0.68 1.32}" BaseExtinction="{3.61 2.62 2.29}"-->
+				<Type name="Gold"/> <!--BaseRefractIndex="{0.17 0.42 1.37}" BaseExtinction="{3.15 2.35 1.77}"-->
+				<Type name="Iron"/> <!--BaseRefractIndex="{2.91 2.95 2.58}" BaseExtinction="{3.09 2.93 2.77}"-->
+				<Type name="Lead"/> <!--BaseRefractIndex="{1.44 1.83 1.44}" BaseExtinction="{3.18 3.4  3.18}" Likelyhood="0.2"-->
+				<Type name="Nickel"/>
+				<Type name="Silver"/> <!--BaseRefractIndex="{1.16 0.15 1.14}" BaseExtinction="{3.93 3.19 2.38}"-->
+				<Type name="Steel"/> <!--BaseRefractIndex="{2.9  2.94 2.58}" BaseExtinction="{3.03 2.87 2.71}"-->
+				<Type name="StainlessSteel"/> <!--BaseRefractIndex="{2.85 2.88 2.45}" BaseExtinction="{3.2  3.03 2.81}"-->
+				<Type name="Tin" Likelyhood="0.4"/>
+				<Type name="Unspecified"/>
+			</Types>
+			<Finishes>
+				<Finish name="Raw" BaseRoughness="1.0" Likelyhood="0.2"/>
+				<Finish name="Cast" BaseRoughness="1.0" Likelyhood="0.5"/>
+				<Finish name="Rough" BaseRoughness="0.9"/>
+				<Finish name="Weathered" BaseRoughness="0.6" Likelyhood="0.0"/>
+				<Finish name="Grimed" BaseRoughness="0.8" Likelyhood="0.0"/>
+				<Finish name="Tarnished" BaseRoughness="0.5" Likelyhood="0.0"/>
+				<Finish name="Patinated" BaseRoughness="0.4" Likelyhood="0.0"/>
+				<Finish name="Oxidized" BaseRoughness="0.65" Likelyhood="0.0"/>
+				<Finish name="Stained" BaseRoughness="0.45" Likelyhood="0.0"/>
+				<Finish name="Machined" BaseRoughness="0.35"/>
+				<Finish name="Galvanized" BaseRoughness="0.55"/>
+				<Finish name="Brushed" BaseRoughness="0.45"/>
+				<Finish name="Smooth" BaseRoughness="0.2"/>
+				<Finish name="Polished" BaseRoughness="0.05"/>
+				<Finish name="Plated" BaseRoughness="0.0"/>
+			</Finishes>
+			<Coatings NbLayers="2">
+				<Coating name="None" NbLayers="1"/>
+				<Coating name="Matte" CoatRoughness="0.7" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Satin" CoatRoughness="0.45" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="SemiGloss" CoatRoughness="0.35" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Glossy" CoatRoughness="0.25" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="HighGloss" CoatRoughness="0.1" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Glazed" CoatRoughness="0.0" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+			</Coatings>
+		</Group>
+		<Group name="Wood" NbLayers="1" BaseRoughness="0.85" >
+			<Types>
+				<Type name="Hard"/>
+				<Type name="Soft"/>
+			</Types>
+			<Finishes>
+				<Finish name="Rough" BaseRoughness="0.9" Likelyhood="0.3"/>
+				<Finish name="Sandblasted" BaseRoughness="0.9" Likelyhood="0.4"/>
+				<Finish name="SandedRough" BaseRoughness="0.9" Likelyhood="0.6"/>
+				<Finish name="SandedMedium" BaseRoughness="0.85"/>
+				<Finish name="SandedFine" BaseRoughness="0.8"/>
+				<Finish name="SandedPolished" BaseRoughness="0.7"/>
+				<Finish name="Weathered" BaseRoughness="0.75" Likelyhood="0.0"/>
+				<Finish name="Stained" BaseRoughness="0.65" Likelyhood="0.0"/>
+				<Finish name="MDF" BaseRoughness="0.7" Likelyhood="0.2"/>
+				<Finish name="HDF" BaseRoughness="0.5" Likelyhood="0.2"/>
+				<Finish name="Pressed" BaseRoughness="0.7" Likelyhood="0.2"/>
+			</Finishes>
+			<Coatings NbLayers="2">
+				<Coating name="None" NbLayers="1"/>
+				<Coating name="Oiled" CoatRoughness="0.4" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.4"/>
+				<Coating name="Wax" CoatRoughness="0.05" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="Matte" CoatRoughness="0.7" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="Eggshell" CoatRoughness="0.6" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="Satin" CoatRoughness="0.45" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="SemiGloss" CoatRoughness="0.35" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="Glossy" CoatRoughness="0.25" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="HighGloss" CoatRoughness="0.1" CoatRefractIndex="{1.5 1.5 1.5}"/>
+				<Coating name="Glazed" CoatRoughness="0.0" CoatRefractIndex="{1.5 1.5 1.5}"/>
+			</Coatings>
+		</Group>
+		<Group name="Paint" NbLayers="2" BaseRoughness="0.7">
+			<Types>
+				<Type name="Latex"/>
+				<Type name="Acrylic"/>
+				<Type name="Alkyd" Likelyhood="0.2"/>
+				<Type name="Enamel"/>
+				<Type name="Epoxy" Likelyhood="0.2"/>
+				<Type name="Generic"/>
+				<Type name="Metallic" BaseRoughness="0.7"/>
+				<Type name="Oil" />
+				<Type name="Powder" BaseRoughness="1.0"/>
+			</Types>
+			<Finishes CoatRefractIndex="{1.5 1.5 1.5}">
+				<Finish name="CeilingFlat" CoatRoughness="0.9"/>
+				<Finish name="Flat" CoatRoughness="0.8"/>
+				<Finish name="Matte" CoatRoughness="0.7"/>
+				<Finish name="Eggshell" CoatRoughness="0.6"/>
+				<Finish name="Satin" CoatRoughness="0.45"/>
+				<Finish name="SemiGloss" CoatRoughness="0.35"/>
+				<Finish name="Glossy" CoatRoughness="0.25"/>
+				<Finish name="HighGloss" CoatRoughness="0.1"/>
+				<Finish name="Glazed" CoatRoughness="0.00"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Mineral" NbLayers="1" >
+			<Types>
+				<Type name="Alabaster"/>
+				<Type name="Antracite" Likelyhood="0.1"/>
+				<Type name="Asphalt" Likelyhood="0.1"/>
+				<Type name="Brick"/>
+				<Type name="Ceramic"/>
+				<Type name="Clay" Likelyhood="0.2"/>
+				<Type name="Concrete"/>
+				<Type name="Generic"/>
+				<Type name="Granite"/>
+				<Type name="Limestone" Likelyhood="0.25"/>
+				<Type name="Marble"/>
+				<Type name="Paver" Likelyhood="0.3"/>
+				<Type name="Plaster"/>
+				<Type name="Porcelain"/>
+				<Type name="Rock" Likelyhood="0.0"/>
+				<Type name="Sandstone" Likelyhood="0.2"/>
+				<Type name="Slate" Likelyhood="0.4"/>
+				<Type name="Soapstone"/>
+				<Type name="Stone"/>
+				<Type name="Terracotta" Likelyhood="0.25"/>
+			</Types>
+			<Finishes>
+				<Finish name="Raw" BaseRoughness="1.0"/>
+				<Finish name="Cast" BaseRoughness="0.9"/>
+				<Finish name="Natural" BaseRoughness="1.0"/>
+				<Finish name="Sawn" BaseRoughness="0.85"/>
+				<Finish name="Honed" BaseRoughness="0.55"/>
+				<Finish name="Flamed" BaseRoughness="1.0" Likelyhood="0.0"/>
+				<Finish name="Chiseled" BaseRoughness="1.0" Likelyhood="0.05"/>
+				<Finish name="Bushhammered" BaseRoughness="1.0" Likelyhood="0.0"/>
+				<Finish name="Pineappled" BaseRoughness="1.0" Likelyhood="0.0"/>
+				<Finish name="Brushed" BaseRoughness="0.75"/>
+				<Finish name="PolishedMedium" BaseRoughness="0.4"/>
+				<Finish name="PolishedFine" BaseRoughness="0.25"/>
+				<Finish name="Polished" BaseRoughness="0.10"/>
+				<Finish name="PolishedMirror" BaseRoughness="0.00"/>
+			</Finishes>
+			<Coatings NbLayers="2">
+				<Coating name="None" NbLayers="1"/>
+				<Coating name="Flat" CoatRoughness="0.8" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2" />
+				<Coating name="Matte" CoatRoughness="0.7" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Eggshell" CoatRoughness="0.6" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Satin" CoatRoughness="0.45" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="SemiGloss" CoatRoughness="0.35" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Glossy" CoatRoughness="0.25" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="HighGloss" CoatRoughness="0.1" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Glazed" CoatRoughness="0.00" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+			</Coatings>
+		</Group>
+		<Group name="Plastic" NbLayers="2" BaseRoughness="0.35">
+			<Types>
+				<Type name="Acrylic" CoatRefractIndex="{1.49 1.49 1.49}"/>
+				<Type name="CarbonFiber" CoatRefractIndex="{1.52 1.52 1.52}" BaseRoughness="0.6"/>
+				<Type name="Fluorocarbon" CoatRefractIndex="{1.42 1.42 1.42}"/>
+				<Type name="Generic" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Latex" CoatRefractIndex="{1.59 1.6  1.61}" BaseRoughness="0.9"/>
+				<Type name="PVC" CoatRefractIndex="{1.58 1.59 1.61}"/>
+				<Type name="Polyamide" CoatRefractIndex="{1.53 1.53 1.53}"/>
+				<Type name="Polyethylene" CoatRefractIndex="{1.5  1.5  1.51}"/>
+				<Type name="Polystyrene" CoatRefractIndex="{1.59 1.6  1.61}"/>
+				<Type name="Rubber" CoatRefractIndex="{1.51 1.51 1.51}" BaseRoughness="0.8"/>
+				<Type name="Silicon" CoatRefractIndex="{1.42 1.41 1.4}"/>
+				<Type name="Teflon" CoatRefractIndex="{1.35 1.36 1.38}" BaseRoughness="0.4"/>
+			</Types>
+			<Finishes>
+				<Finish name="Foamed" CoatRoughness="0.9" Likelyhood="0.3"/>
+				<Finish name="Matte" CoatRoughness="0.7"/>
+				<Finish name="Eggshell" CoatRoughness="0.6"/>
+				<Finish name="Satin" CoatRoughness="0.45"/>
+				<Finish name="SemiGloss" CoatRoughness="0.35"/>
+				<Finish name="Glossy" CoatRoughness="0.25"/>
+				<Finish name="HighGloss" CoatRoughness="0.1"/>
+				<Finish name="Glazed" CoatRoughness="0.0"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="SolidSurface" NbLayers="2" BaseRoughness="0.6">
+			<Types>
+				<Type name="Acrylic" CoatRefractIndex="{1.49 1.49 1.49}"/>
+				<Type name="Generic" CoatRefractIndex="{1.6  1.6  1.6}"/>
+				<Type name="Polyester" CoatRefractIndex="{1.63 1.63 1.63}"/>
+				<Type name="Quartz" CoatRefractIndex="{1.5  1.5  1.5}" BaseRoughness="0.9"/>
+			</Types>
+			<Finishes>
+				<Finish name="Embossed" CoatRoughness="0.45" Likelyhood="0.3"/>
+				<Finish name="Matte" CoatRoughness="0.7"/>
+				<Finish name="Eggshell" CoatRoughness="0.6"/>
+				<Finish name="Satin" CoatRoughness="0.45"/>
+				<Finish name="SemiGloss" CoatRoughness="0.35"/>
+				<Finish name="Glossy" CoatRoughness="0.25"/>
+				<Finish name="HighGloss" CoatRoughness="0.1"/>
+				<Finish name="Glazed" CoatRoughness="0.0"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Laminate" NbLayers="2" BaseRoughness="0.6" CoatRefractIndex="{1.5 1.5 1.5}">
+			<Types>
+				<Type name="Generic" BaseRoughness="0.9"/>
+				<Type name="Plain" BaseRoughness="1.0"/>
+				<Type name="Paper" BaseRoughness="0.9"/>
+				<Type name="Wood" BaseRoughness="0.8" Likelyhood="0.3"/>
+				<Type name="Metal" BaseRoughness="0.4" Likelyhood="0.3"/>
+			</Types>
+			<Finishes>
+				<Finish name="Embossed" CoatRoughness="0.45"/>
+				<Finish name="Rough" CoatRoughness="0.8"/>
+				<Finish name="Matte" CoatRoughness="0.7"/>
+				<Finish name="Eggshell" CoatRoughness="0.6"/>
+				<Finish name="Satin" CoatRoughness="0.45"/>
+				<Finish name="SemiGloss" CoatRoughness="0.35"/>
+				<Finish name="Glossy" CoatRoughness="0.25"/>
+				<Finish name="HighGloss" CoatRoughness="0.1"/>
+				<Finish name="Glazed" CoatRoughness="0.0"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Fabric" NbLayers="1" BaseRoughness="0.85">
+			<Types>
+				<Type name="Acetate" NbLayers="2" CoatRoughness="0.45" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Acrylic" NbLayers="2" CoatRoughness="0.9" CoatRefractIndex="{1.49 1.49 1.49}"/>
+				<Type name="Canvas"/>
+				<Type name="Cashmere"/>
+				<Type name="Corduroy"/>
+				<Type name="Cotton"/>
+				<Type name="Felt" BaseRoughness="0.9"/>
+				<Type name="Flannel" BaseRoughness="0.9"/>
+				<Type name="Jean"/>
+				<Type name="Jute"/>
+				<Type name="Linen"/>
+				<Type name="Mohair"/>
+				<Type name="Neoprene" NbLayers="2" CoatRoughness="0.8" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Nylon" NbLayers="2" CoatRoughness="0.75" CoatRefractIndex="{1.53 1.53 1.53}"/>
+				<Type name="Olefin" NbLayers="2" CoatRoughness="0.75" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Polyester" NbLayers="2" CoatRoughness="0.75" CoatRefractIndex="{1.63 1.63 1.63}"/>
+				<Type name="Polyurethane" NbLayers="2" CoatRoughness="0.75" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="PVC" NbLayers="2" CoatRoughness="0.3" CoatRefractIndex="{1.53 1.53 1.53}"/>
+				<Type name="Rayon" NbLayers="2" CoatRoughness="0.45" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Silk" NbLayers="2" CoatRoughness="0.45" CoatRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Velvet"/>
+				<Type name="Wool"/>
+			</Types>
+			<Finishes>
+				<Finish name="Brushed" Likelyhood="0.2"/>
+				<Finish name="Chintz" BaseRoughness="0.5" Likelyhood="0.2"/>
+				<Finish name="Cuddle" Likelyhood="0.2"/>
+				<Finish name="Fleece" Likelyhood="0.2"/>
+				<Finish name="PeachSkin" BaseRoughness="0.7" Likelyhood="0.2"/>
+				<Finish name="Sanded" Likelyhood="0.2"/>
+				<Finish name="KnittedCoarse" BaseRoughness="0.9"/>
+				<Finish name="KnittedMedium" BaseRoughness="0.9"/>
+				<Finish name="KnittedFine" BaseRoughness="0.9"/>
+				<Finish name="WovenCoarse" BaseRoughness="0.9"/>
+				<Finish name="WovenMedium" BaseRoughness="0.75"/>
+				<Finish name="WovenFine" BaseRoughness="0.6"/>
+				<Finish name="Heavy"/>
+				<Finish name="Medium"/>
+				<Finish name="Light"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Carpet" NbLayers="1" BaseRoughness="0.9">
+			<Types>
+				<Type name="Hemp"/>
+				<Type name="Nylon"/>
+				<Type name="Polyester"/>
+				<Type name="Polymer"/>
+				<Type name="Polypropylene"/>
+				<Type name="Wool"/>
+			</Types>
+			<Finishes>
+				<Finish name="Shag"/>
+				<Finish name="Rug"/>
+				<Finish name="Plush"/>
+				<Finish name="Felt"/>
+				<Finish name="Tapestry"/>
+				<Finish name="Turkish"/>
+				<Finish name="Saxony"/>
+				<Finish name="Frieze"/>
+				<Finish name="Cable"/>
+				<Finish name="Looped"/>
+				<Finish name="CutAndLoop"/>
+				<Finish name="Persian"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Leather" NbLayers="2" BaseRoughness="0.7 ">
+			<Types>
+				<Type name="Leather">
+					<Finishes>
+						<Finish name="Raw" NbLayers="1" BaseRoughness="0.9"/>
+						<Finish name="TannedHeavy" BaseRoughness="0.7" CoatRoughness="0.7" CoatRefractIndex="{1.48 1.48 1.48}"/>
+						<Finish name="TannedMedium" BaseRoughness="0.55" CoatRoughness="0.55" CoatRefractIndex="{1.48 1.48 1.48}"/>
+						<Finish name="TannedLight" BaseRoughness="0.45" CoatRoughness="0.45" CoatRefractIndex="{1.48 1.48 1.48}"/>
+						<Finish name="Patent" BaseRoughness="0.05" CoatRoughness="0.05" CoatRefractIndex="{1.63 1.63 1.63}"/>
+					</Finishes>
+				</Type>
+				<Type name="LeatherCloth">
+					<Finishes>
+						<Finish name="Raw" NbLayers="1" BaseRoughness="0.9"/>
+						<Finish name="TannedHeavy" BaseRoughness="0.9" CoatRoughness="0.7" CoatRefractIndex="{1.53 1.53 1.53}"/>
+						<Finish name="TannedMedium" BaseRoughness="0.85" CoatRoughness="0.55" CoatRefractIndex="{1.53 1.53 1.53}"/>
+						<Finish name="TannedLight" BaseRoughness="0.8" CoatRoughness="0.45" CoatRefractIndex="{1.53 1.53 1.53}"/>
+						<Finish name="Patent" BaseRoughness="0.1" CoatRoughness="0.05" CoatRefractIndex="{1.63 1.63 1.63}"/>
+					</Finishes>
+				</Type>
+				<Type name="Suede" NbLayers="1" exclude="Patent">
+					<Finishes>
+						<Finish name="Raw" BaseRoughness="1.0"/>
+						<Finish name="TannedHeavy" BaseRoughness="0.9"/>
+						<Finish name="TannedMedium" BaseRoughness="0.8"/>
+						<Finish name="TannedLight" BaseRoughness="0.7"/>
+					</Finishes>
+				</Type>
+			</Types>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Wallpaper" BaseRoughness="0.8" NbLayers="1">
+			<Types>
+				<Type name="Paper"/>
+				<Type name="Fabric"/>
+				<Type name="Vinyl" BaseRoughness="0.6" NbLayers="2" CoatRefractIndex="{1.5 1.5 1.5}">
+					<Finish name="Matte" CoatRoughness="0.7"/>
+					<Finish name="Eggshell" CoatRoughness="0.6"/>
+					<Finish name="Satin" CoatRoughness="0.45"/>
+					<Finish name="SemiGloss" CoatRoughness="0.35"/>
+					<Finish name="Glossy" CoatRoughness="0.25"/>
+					<Finish name="HighGloss" CoatRoughness="0.1"/>
+				</Type>
+				<Type name="Generic"/>
+				<Type name="Fibers" Likelyhood="0.3"/>
+				<Type name="Foil" BaseRoughness="0.45" Likelyhood="0.4">
+					<Finish name="Eggshell" BaseRoughness="0.6"/>
+					<Finish name="Satin" BaseRoughness="0.45"/>
+					<Finish name="SemiGloss" BaseRoughness="0.35"/>
+					<Finish name="Glossy" BaseRoughness="0.25"/>
+					<Finish name="HighGloss" BaseRoughness="0.1"/>
+				</Type>
+				<Type name="GlassTextile" Likelyhood="0.3"/>
+			</Types>
+			<Finishes>
+				<Finish name="Natural"/>
+				<Finish name="String"/>
+				<Finish name="Flocked" BaseRoughness="1.0" Likelyhood="0.2"/>
+				<Finish name="Matte"/>
+				<Finish name="Eggshell" BaseRoughness="0.6"/>
+				<Finish name="Satin" BaseRoughness="0.45"/>
+				<Finish name="SemiGloss" BaseRoughness="0.35"/>
+				<Finish name="Glossy" BaseRoughness="0.25"/>
+				<Finish name="HighGloss" BaseRoughness="0.1"/>
+				<Finish name="Glazed" BaseRoughness="0.0" Likelyhood="0.0"/>
+			</Finishes>
+			<Coatings NbLayers="2">
+				<Coating name="None" NbLayers="1"/>
+				<Coating name="Sprayed" CoatRoughness="0.8" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Matte" CoatRoughness="0.7" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="Eggshell" CoatRoughness="0.6" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Satin" CoatRoughness="0.45" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="SemiGloss" CoatRoughness="0.35" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Glossy" CoatRoughness="0.25" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.25"/>
+				<Coating name="HighGloss" CoatRoughness="0.1" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.2"/>
+				<Coating name="Glazed" CoatRoughness="0.0" CoatRefractIndex="{1.5 1.5 1.5}" Likelyhood="0.0"/>
+			</Coatings>
+		</Group>
+		<Group name="Glass" NbLayers="1" BaseRoughness="0.00" BaseRefractIndex="{1.5 1.5 1.5}">
+			<Types>
+				<Type name="Acrylic" BaseRefractIndex="{1.49 1.49 1.49}"/>
+				<Type name="Crystal" BaseRefractIndex="{1.7  1.7  1.7}"/>
+				<Type name="Diamond" BaseRefractIndex="{2.42 2.42 2.42}"  Likelyhood="0.2"/>
+				<Type name="Generic" BaseRefractIndex="{1.54 1.54 1.54}"/>
+				<Type name="Glass" BaseRefractIndex="{1.54 1.54 1.54}"/>
+				<Type name="Plastic" BaseRefractIndex="{1.5  1.5  1.5}"/>
+				<Type name="Polycarbonate" BaseRefractIndex="{1.58 1.58 1.58}" Likelyhood="0.2"/>
+				<Type name="PMMA" BaseRefractIndex="{1.49 1.49 1.49}" Likelyhood="0.2"/>				<Type name="Polyethylene" BaseRefractIndex="{1.5  1.5  1.51}" Likelyhood="0.2"/>
+				<Type name="Polypropylene" BaseRefractIndex="{1.49 1.49 1.49}" Likelyhood="0.2"/>
+				<Type name="Liquid" BaseRefractIndex="{1.33 1.33 1.33}"/>
+				<Type name="Ice" BaseRefractIndex="{1.31 1.31 1.31}"/>
+				<Type name="Oil" BaseRefractIndex="{1.52 1.52 1.52}" Likelyhood="0.2"/>
+			</Types>
+			<Finishes>
+				<Finish name="None"/>
+				<Finish name="Molten" Likelyhood="0.25"/>
+				<Finish name="Sandblasted" BaseRoughness="0.85"/>
+				<Finish name="Frosted" BaseRoughness="0.75"/>
+				<Finish name="Etched" BaseRoughness="0.55"/>
+				<Finish name="Ground" BaseRoughness="0.40"/>
+				<Finish name="Clear" BaseRoughness="0.0"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Miscellaneous" NbLayers="1" BaseRoughness="0.8">
+			<Types>
+				<Type name="Background" BaseRoughness="0.9"/>
+				<Type name="Undefined"/>
+				<Type name="Stucco" BaseRoughness="0.9"/>
+				<Type name="Neutral" BaseRoughness="0.8"/>
+			</Types>
+			<Finishes>
+				<Finish name="None"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+		<Group name="Emitter" NbLayers="2" BaseRoughness="0.8">
+			<Types>
+				<Type name="LED" BaseRoughness="0.9" CoatRoughness="0.2" CoatRefractIndex="{1.5 1.5 1.5}" BaseLuminance="{1.0 1.0 1.0}"/>
+				<Type name="Screen" BaseRoughness="0.9" CoatRoughness="0.1" CoatRefractIndex="{1.5 1.5 1.5}" BaseLuminance="{1.0 1.0 1.0}"/>
+				<Type name="LightSource" BaseRoughness="0.9" BaseLuminance="{1.0 1.0 1.0}"/>
+				<Type name="Portal" CoatRoughness="0.0" CoatRefractIndex="{1.5 1.5 1.5}"/>
+			</Types>
+			<Finishes>
+				<Finish name="Matte" CoatRoughness="0.7"/>
+				<Finish name="Glossy" CoatRoughness="0.25"/>
+				<Finish name="Glass" CoatRoughness="0.0"/>
+				<Finish name="None" CoatRoughness="0.9"/>
+			</Finishes>
+			<Coatings>
+				<Coating name="None"/>
+			</Coatings>
+		</Group>
+	</Groups>
+</MaterialMap>

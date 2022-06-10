@@ -1,0 +1,86 @@
+:root {
+    color-scheme: dark;
+    --bg: #1e1e1e;
+    --text:  #c1c1c1;
+    --highlight1: #b887ff;
+    --highlight2: #49dac6;
+}
+
+table {
+    border-collapse: collapse;
+    border: 0;
+}
+
+#table_sliders input {
+    margin: 0px 10px 0px 10px;
+    padding: 0px;
+    height: 21px;
+    width: 200px;
+}
+
+.mcodelist {
+    width: 200px;
+}
+
+body, option, select {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12pt;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+::selection {
+    background-color: var(--highlight1);
+    color: var(--bg);
+}
+
+:focus {
+    outline: 1px var(--highlight1) solid;
+}
+
+option:checked {
+    background-color: var(--highlight1);
+    color: var(--bg);
+}
+
+.mcode {
+}
+
+#mcode {
+    font-size: 16pt;
+    margin-top: 1em;
+}
+
+select {
+    overflow-y: auto;
+    border-color: #444
+}
+
+#mcode_lists {
+    border-spacing: 12px 6px;
+    border: 0;
+    left: -12px;
+    position: relative;
+    border-collapse: separate;
+}
+
+#mcode_lists td {
+    padding: 0px;
+}
+
+#mcodelabels {
+    position: absolute;
+    display: inline-block;
+    left: 550px;
+}
+
+.none {
+    color: #666;
+}
+
+#CombinedRoughnessLabel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 180px;
+}
